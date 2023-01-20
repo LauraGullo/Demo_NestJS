@@ -8,12 +8,12 @@ export class DogsService {
     private dogs: Dog[]=[];
 
     getDogs():Dog[]{
+        
         return this.dogs;
     }
     
     getOneDog(id:number):Dog{
-        const dog= this.dogs.find((dog)=> dog.id==id);
-        return dog;
+        return this.dogs.find((dog)=> dog.id==id);
     }
 
     createDog(dog){
