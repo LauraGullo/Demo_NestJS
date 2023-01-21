@@ -3,7 +3,6 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { DogsModule } from './dogs/dogs.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { Dog } from './entities/dogs.entity/dogs.entity';
 
 
 @Module({
@@ -14,7 +13,7 @@ import { Dog } from './entities/dogs.entity/dogs.entity';
     username: 'root',
     password: 'root123',
     database: 'demo_nestjs',
-    entities: [Dog],
+    entities: [__dirname + '/**/*.entity{.ts,.js}',],
     synchronize: true,
   }),DogsModule],
     
