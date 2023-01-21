@@ -1,5 +1,10 @@
-export class Dog {
 
-    id:number;
-    name:String;
-}
+import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+
+@Entity()
+export class Dog {
+  @PrimaryGeneratedColumn()
+  id: number;
+
+  @Column()
+  name: string;}
