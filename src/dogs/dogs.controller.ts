@@ -1,8 +1,9 @@
 import { Body, Controller, Get, Param, ParseIntPipe, Post } from '@nestjs/common';
 import { Delete } from '@nestjs/common/decorators';
 import { Put } from '@nestjs/common/decorators/http/request-mapping.decorator';
-import { DogsService } from './dogs.service';
+import { DogsService } from 'src/dogs/dogs.service';
 import { UpdateDogDto } from './dto/UpdateDog.dto';
+import { VetFile } from './entities/VetFile.entity';
 
 @Controller(':dogs')
 export class DogsController {
@@ -32,5 +33,10 @@ export class DogsController {
   @Put(':id')
   updateDog(@Param ('id', ParseIntPipe)id:number, @Body()dog:UpdateDogDto){
     return this.dogsService.updateDog(id,dog);
+  }
+
+  @Post('vetFile/:id')
+  createVetFile(@Body() vetFile:VetFile, @Param('id', ParseIntPipe)id:number){
+    return this.dogsService.createVetFile(id, vetFile);
   }
 }

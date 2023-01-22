@@ -1,14 +1,16 @@
 import { Injectable, HttpException, HttpStatus } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Dog } from 'src/entities/dogs.entity/dogs.entity';
+import { Dog } from 'src/dogs/entities/dogs.entity';
 import { Repository } from 'typeorm';
 import { UpdateDogDto } from './dto/UpdateDog.dto';
+import { VetFile } from './entities/VetFile.entity';
 
 
 @Injectable()
 export class DogsService {
 
-    constructor(@InjectRepository(Dog)private dogRepository: Repository<Dog> ){}
+    constructor(@InjectRepository(Dog)private dogRepository: Repository<Dog>, 
+                @InjectRepository(VetFile) private vetFileReposiory:Repository<VetFile>){}
 
    
     getDogs(){
@@ -24,12 +26,11 @@ export class DogsService {
     }
 
     async createDog(dog){
-        const dogFound=await this.dogRepository.findOne({where:{name:dog.name}})
+       /* const dogFound=await this.dogRepository.findOne({where:{name:dog.name}})
         if(dogFound){
             return new HttpException("Dog already exists", HttpStatus.CONFLICT)
-        }
-        const dogCreated=this.dogRepository.create(dog);
-        return this.dogRepository.save(dogCreated);
+        }*/
+        return this.dogRepository.save(dog);
     }
 
     async updateDog(id:number, dog: UpdateDogDto){
@@ -47,5 +48,15 @@ export class DogsService {
             return new HttpException('Dog not found', HttpStatus.NOT_FOUND);
         }
         return "Id " + id +" removed";
+    }
+
+    async createVetFile(id:number, vetFile:VetFile){
+        const dogFound=await this.dogRepository.findOne({where:{id}})
+        if(!dogFound){
+            return new HttpException("Dog not found", HttpStatus.NOT_FOUND)
+        }
+        const savedVetFile=await this.vetFileReposiory.save(vetFile);
+        dogFound.vetFile=savedVetFile;
+        return this.dogRepository.save(dogFound);
     }
 }

@@ -3,7 +3,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { DogsModule } from './dogs/dogs.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
-
+import { OwnerModule } from './owner/owner.module';
 
 @Module({
   imports: [TypeOrmModule.forRoot({
@@ -15,7 +15,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
     database: 'demo_nestjs',
     entities: [__dirname + '/**/*.entity{.ts,.js}',],
     synchronize: true,
-  }),DogsModule],
+  }),DogsModule, OwnerModule ],
     
   controllers: [AppController],
   providers: [AppService],
