@@ -4,7 +4,7 @@ import { Put } from '@nestjs/common/decorators/http/request-mapping.decorator';
 import { DogsService } from './dogs.service';
 import { UpdateDogDto } from './dto/UpdateDog.dto';
 
-@Controller(':dogs')
+@Controller('dogs')
 export class DogsController {
   
   constructor(private dogsService : DogsService){}
