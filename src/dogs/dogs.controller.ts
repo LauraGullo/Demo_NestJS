@@ -5,7 +5,7 @@ import { DogsService } from 'src/dogs/dogs.service';
 import { UpdateDogDto } from './dto/UpdateDog.dto';
 import { VetFile } from './entities/VetFile.entity';
 
-@Controller(':dogs')
+@Controller('dogs')
 export class DogsController {
   
   constructor(private dogsService : DogsService){}
