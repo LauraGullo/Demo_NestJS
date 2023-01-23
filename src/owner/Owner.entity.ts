@@ -1,6 +1,5 @@
-import { join } from "path";
 import { Dog } from "src/dogs/entities/dogs.entity";
-import { Column, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn, } from "typeorm";
+import { Column, Entity, JoinColumn, OneToMany, OneToOne, PrimaryGeneratedColumn, } from "typeorm";
 
 @Entity()
 export class Owner {
@@ -13,4 +12,7 @@ export class Owner {
   @Column()
   password: string;
 
+  @OneToMany(()=>Dog, dog =>dog.owner)
+  dogs:Dog[];
+ 
 }

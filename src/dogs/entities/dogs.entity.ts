@@ -1,5 +1,6 @@
 
-import { Entity, Column, PrimaryGeneratedColumn, OneToOne, JoinColumn } from 'typeorm';
+import { Owner } from 'src/owner/Owner.entity';
+import { Entity, Column, PrimaryGeneratedColumn, OneToOne, JoinColumn, ManyToOne } from 'typeorm';
 import { VetFile } from './VetFile.entity';
 
 @Entity()
@@ -14,4 +15,9 @@ export class Dog {
   @JoinColumn()
   vetFile:VetFile; 
 
+  @ManyToOne(()=>Owner, owner=>owner.dogs)
+  owner:Owner;
+
+  @Column({nullable:true})
+  ownerId:number;
 }

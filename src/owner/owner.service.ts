@@ -19,6 +19,6 @@ export class OwnerService {
      }
 
      getOwners(){
-        return this.ownerRepository.find();
+        return this.ownerRepository.find({relations:['dogs']});
   }
 }

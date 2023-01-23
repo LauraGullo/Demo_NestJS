@@ -14,7 +14,7 @@ export class DogsService {
 
    
     getDogs(){
-          return this.dogRepository.find();
+          return this.dogRepository.find({relations:['owner','vetFile']});
     }
     
     async getOneDog(id:number){
@@ -26,10 +26,6 @@ export class DogsService {
     }
 
     async createDog(dog){
-       /* const dogFound=await this.dogRepository.findOne({where:{name:dog.name}})
-        if(dogFound){
-            return new HttpException("Dog already exists", HttpStatus.CONFLICT)
-        }*/
         return this.dogRepository.save(dog);
     }
 
