@@ -1,18 +1,16 @@
 import { Body, Controller, Get, Param, ParseIntPipe, Post } from '@nestjs/common';
-import { Dog } from 'src/entities/dogs.entity/dogs.entity';
 import { DogsService } from './dogs.service';
 
-@Controller(':dogs')
+@Controller('dogs')
 export class DogsController {
   
   constructor(private dogsService : DogsService){}
 
   @Get(':id')
-  getOneDog(@Param ('id', ParseIntPipe)id:number):Dog {
+  getOneDog(@Param ('id')id:number){
     return this.dogsService.getOneDog(id);
   }
-  
-
+ 
   @Get()
   getDogs() {
     return this.dogsService.getDogs();
