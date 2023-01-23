@@ -1,5 +1,5 @@
 import { Body, Controller, Get, Param, ParseIntPipe, Post } from '@nestjs/common';
-import { Delete } from '@nestjs/common/decorators';
+import { Dog } from 'src/entities/dogs.entity/dogs.entity';
 import { DogsService } from './dogs.service';
 
 @Controller(':dogs')
@@ -8,9 +8,10 @@ export class DogsController {
   constructor(private dogsService : DogsService){}
 
   @Get(':id')
-  getOneDog(@Param ('id')id:number) {
+  getOneDog(@Param ('id', ParseIntPipe)id:number):Dog {
     return this.dogsService.getOneDog(id);
   }
+  
 
   @Get()
   getDogs() {
@@ -21,5 +22,5 @@ export class DogsController {
   createDog(@Body() dog){
     return this.dogsService.createDog(dog);
   }
- 
+
 }

@@ -12,12 +12,14 @@ export class DogsService {
         return this.dogs;
     }
     
-    getOneDog(id:number):Dog{
-        return this.dogs.find((dog)=> dog.id==id);
+    getOneDog(id:number){
+        return this.dogs.find(dog=> dog.id==id);
     }
-
+       
     createDog(dog){
         const dogCreated=this.dogs.push(dog)
         return dogCreated;
     }
+     
+ 
 }
