@@ -1,5 +1,5 @@
 
-import { Owner } from 'src/owner/Owner.entity';
+import { Owner } from '../../owner/Owner.entity';
 import { Entity, Column, PrimaryGeneratedColumn, OneToOne, JoinColumn, ManyToOne } from 'typeorm';
 import { VetFile } from './VetFile.entity';
 

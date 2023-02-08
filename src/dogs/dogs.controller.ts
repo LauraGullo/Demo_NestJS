@@ -1,7 +1,7 @@
 import { Body, Controller, Get, Param, ParseIntPipe, Post } from '@nestjs/common';
 import { Delete } from '@nestjs/common/decorators';
 import { Put } from '@nestjs/common/decorators/http/request-mapping.decorator';
-import { DogsService } from 'src/dogs/dogs.service';
+import { DogsService } from './../dogs/dogs.service';
 import { UpdateDogDto } from './dto/UpdateDog.dto';
 import { VetFile } from './entities/VetFile.entity';
 

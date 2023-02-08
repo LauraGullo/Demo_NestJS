@@ -1,6 +1,6 @@
 import { Injectable, HttpException, HttpStatus } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Dog } from 'src/dogs/entities/dogs.entity';
+import { Dog } from './../dogs/entities/dogs.entity';
 import { Repository } from 'typeorm';
 import { UpdateDogDto } from './dto/UpdateDog.dto';
 import { VetFile } from './entities/VetFile.entity';

@@ -1,4 +1,4 @@
-import { Dog } from "src/dogs/entities/dogs.entity";
+import { Dog } from "./../dogs/entities/dogs.entity";
 import { Column, Entity, JoinColumn, OneToMany, OneToOne, PrimaryGeneratedColumn, } from "typeorm";
 
 @Entity()
